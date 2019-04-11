@@ -44,7 +44,7 @@ io.on("connection", socket => {
     })
 })
 
-const port = 3010;
+const port = process.env.PORT || 3010;
 server.listen(port, () => {
     console.log("server started on port "+port)
 })
