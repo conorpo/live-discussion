@@ -6,29 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <script defer src="main.js"></script>
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="question.js"></script>
     <title>Temp Title</title>
 </head>
 <body>
-    <div class="container-fluid" style="height:5%; background-color:#4b3b47">
-        
-    </div>
-    <div class="container">
-        <div class="jumbotron my-4">
-            <h1 class="display-4">Hello, world!</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-            <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-        </div>
-        <div class="jumbotron my-4">
-            <h1 class="display-4">Hello, world!</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-            <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    <div class="container-fluid p-1" style="height:5%; background-color:#4b3b47">
+        <div class="row">
+            <div class="col-3">
+               
+            </div>
+            <div class="col-6">
+                <input id="question" type="text" class="form-control w-100">
+            </div>
+            <div class="col-3">
+                <button onclick="host()" class="btn btn-light float-right mr-1">Discuss!</button>
+            </div>
         </div>
     </div>
-
+    <div class="container" id="cards">
+    </div>
 </body>
 </html>
