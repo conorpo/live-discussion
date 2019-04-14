@@ -1,33 +1,24 @@
 const responseEl = document.getElementById("response");
 const questionEl = document.getElementById("question");
 const buttonEl = document.getElementById("submit");
+const roomDiv = document.getElementById("roomDiv");
+const responseDiv = document.getElementById("responseDiv");
+const idInput = document.getElementById("idInput");
 
 const socket = io();
 
-function deparam(uri){
-    if(uri === undefined){
-      uri = window.location.search;
-    }
-    var queryString = {};
-    uri.replace(
-      new RegExp(
-        "([^?=&]+)(=([^&#]*))?", "g"),
-        function($0, $1, $2, $3) {
-        	queryString[$1] = decodeURIComponent($3.replace(/\+/g, '%20'));
-        }
-      );
-    return queryString;
-};
-
-const params = deparam(window.location.search);
-
-socket.emit("join", params.rm);
+function join(){
+  console.log(idInput.value);
+  socket.emit("join", idInput.value);
+}
 
 let ready = false;
 socket.on("question", question => {
+    responseDiv.classList.remove("d-none")
     buttonEl.classList.remove("disabled");
     ready = true;
     questionEl.innerText = question;
+    roomDiv.classList.add("d-none");
 })
 
 function submit(){

@@ -4,10 +4,6 @@ const path = require("path");
 const server = require('http').Server(app);
 const io = require("socket.io")(server);
 
-app.get(/(\d){4}$/, (req, res) => {
-    console.log("test");
-    res.redirect("/response?rm="+req.path.slice(1, 5))
-})
 app.use(express.static(path.join(__dirname,"..","public"),{extensions: ['html']}));
 
 
@@ -18,7 +14,6 @@ rooms[0] = {question: "What up?" , owner:"loser"};
 
 io.on("connection", socket => {
     socket.on("create", question => {
-        console.log(question);
         let roomID = "0";
         while(activeRooms.includes(roomID)){
             roomID = (Math.floor(Math.random()*10000)).toString().padStart(4,0);
@@ -31,7 +26,9 @@ io.on("connection", socket => {
         })
     })
     socket.on("join", roomID => {
+        console.log(roomID);
         if(activeRooms.includes(roomID)){
+            console.log("success");
             socket.join("rm"+roomID);
             const question = rooms[parseInt(roomID)].question;
             socket.emit("question", question);
@@ -46,5 +43,11 @@ io.on("connection", socket => {
 
 const port = process.env.PORT || 3010;
 server.listen(port, () => {
-    console.log("server started on port "+port)
+    console.log(activeRooms);
+    console.log("server started on port "+port);
 })
+
+//TODO
+//Add the little dialog box when creating a room
+//Make it easier to join a room
+//After asking question, prevent discuss button from being pressed again

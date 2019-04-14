@@ -14,7 +14,11 @@
     <div class="container-fluid" style="height:5%; background-color:#4b3b47">
     
     </div>
-    <div class="container my-2 bg-light rounded p-2">
+    <div id="roomDiv" class="container my-2 bg-light rounded p-2" style="height:54px">
+        <input id="idInput" placeholder="Room Code" type="text" class="form-control w-75 float-left ml-2">
+        <button type="button" class="btn btn-success float-left ml-2" style="width: 23%" onclick="join()">Join</button>
+    </div>
+    <div id="responseDiv" class="container my-2 bg-light rounded p-2 d-none">
         <h2 id="question">Question Placeholder</h2>
         <textarea class="form-control my-3" id="response"></textarea>
         <button id="submit" onclick="submit()" type="button" class="btn btn-dark btn-lg btn-block disabled"> Submit Response </button>
