@@ -26,9 +26,7 @@ io.on("connection", socket => {
         })
     })
     socket.on("join", roomID => {
-        console.log(roomID);
         if(activeRooms.includes(roomID)){
-            console.log("success");
             socket.join("rm"+roomID);
             const question = rooms[parseInt(roomID)].question;
             socket.emit("question", question);
@@ -43,11 +41,5 @@ io.on("connection", socket => {
 
 const port = process.env.PORT || 3010;
 server.listen(port, () => {
-    console.log(activeRooms);
     console.log("server started on port "+port);
 })
-
-//TODO
-//Add the little dialog box when creating a room
-//Make it easier to join a room
-//After asking question, prevent discuss button from being pressed again

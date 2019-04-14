@@ -5,6 +5,12 @@ const roomDiv = document.getElementById("roomDiv");
 const responseDiv = document.getElementById("responseDiv");
 const idInput = document.getElementById("idInput");
 
+idInput.addEventListener("keypress",(evt) => {
+  if(evt.key == "Enter"){
+    join();
+  }
+})
+
 const socket = io();
 
 function join(){
